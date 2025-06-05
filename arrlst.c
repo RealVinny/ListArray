@@ -3,6 +3,8 @@
 
 #include "arrlst.h"
 
+#include <string.h>
+
 
 ARRLST *arrLst_initList() {
     ARRLST *list = (ARRLST *)malloc(sizeof(ARRLST));
@@ -31,7 +33,8 @@ void arrLst_addItem(ARRLST ** list, char * item) {
 
             if ((*list)->arrList[i] == NULL) {
 
-                (*list)->arrList[i] = item;
+                (*list)->arrList[i] = malloc(strlen(item) + 1);
+                strcpy((*list)->arrList[i], item);
                 (*list)->quantity += 1;
                 break;
 
@@ -54,10 +57,16 @@ void arrLst_removeItem(ARRLST ** list, char * item, int index) {
 }
 
 void arrLst_removeLastItem(ARRLST ** list) {
-    for (int i = 0; i < (*list)->capacity; ++i) {
-        if ((*list)->arrList[i] != NULL && (*list)->arrList[i++] == NULL) {
 
+    for (int i = (*list)->capacity- 1; i >= 0; --i) {
 
+        if ((*list)->arrList[i] != NULL) {
+
+            free((*list)->arrList[i]);
+            (*list)->arrList[i] = '\0';
+            (*list)->quantity -= 1;
+
+            break;
         }
 
     }
@@ -65,9 +74,13 @@ void arrLst_removeLastItem(ARRLST ** list) {
 }
 
 void arrLst_printItem(ARRLST ** list, const char * item){
+
     for (int i = 0; i < (*list)->quantity; ++i) {
-        if ((*list)->arrList[i] == item) {
+
+        if (strcmp((*list)->arrList[i], item) == 0) {
+
             printf("%s at index %d\n", (*list)->arrList[i], i);
+
         }
 
     }
@@ -83,10 +96,6 @@ void arrLst_printAll(ARRLST ** list) {
 
         if ((*list)->arrList[i] != NULL) {
             printf("%s\n", (*list)->arrList[i]);
-
-        }else {
-            printf("index %d is null\n", i);
         }
-
     }
 }
