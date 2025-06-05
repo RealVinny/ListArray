@@ -1,78 +1,70 @@
-#include <ctype.h>
 #include <stdio.h>
-#include <strings.h>
+#include <stdlib.h>
 
-char buffer[500];
-char * pBuffer = &buffer[sizeof(buffer)];
+#include "arrlst.h"
 
-void listItem(const char list[][25]) {
-	for (int i = 0; i < 25; i ++) {
-		if (list[i][0] != '\0') {
-			printf("%s\n", list[i]);
-		}
-	}
+
+ARRLST *initList() {
+    ARRLST *list = (ARRLST *)malloc(sizeof(ARRLST));
+    return list;
 }
 
-void addItem(char * list[][], int * quant, int quantMax) {
-	while (1 == 1) {
-		if ( quantMax > *quant) {
-
-			printf("Insert the name of the new item\n->");
-			scanf("%150s", buffer);
-
-			for (int i = 0; i < sizeof(list); ++i) {
-				if (list[i][0] != '\0') {
-					for (int j = 0; j < sizeof(list); ++i) {
-
-						if (buffer[j] != '\0') {
-
-							*list[i][j] = buffer[j];
-
-						}
-
-					}
-					break;
-				}
-			}
-
-	}else{
-		printf("List is full");
-		break;
-	}
-
-	}
+ARRLST *customInit(int listSize, int namesSize) {
+    ARRLST *list = (ARRLST *)malloc(sizeof(ARRLST));
+   return list;
 }
 
-void removeItem(char * buff, char * list[][25]) {
+void addItem(ARRLST * list, char * item) {
 
-	while (1 == 1) {
+    if (list->capacity - list->quantity > 0) {
 
-		printf("Do you wish to see the current list itens ?[Y/N]\n->");
-		scanf("%150s", buff);
+        // There's room in the list
+        for (int i = 0; i < *list->capacity; ++i) {
 
-		if (*buff == 'Y') {
-			listItem(list);
-		}
+            if (*list->arrList[i] == '\0') {
 
-		printf("Informe o item para ser removido\n -> ");
-		scanf("%150s", buff);
+                for (int j = 0; j < sizeof(*list->arrList[i]); ++j) {
 
-		for (char c : buffer) {
-			buffer[c] = tolower(buffer[c]);
-		}
+                    *list->arrList[j] = item[j];
 
-		if (buffer[0] == 'y') {
-			break;
-		}
+                }
 
-		for (int i = 0; i < sizeof(*list); i++) {
-			if (strcasecmp(list[i], buff) == 0) {
-				for (int j = 0; j < sizeof(*list); j++) {
-					list[i][j] = '\0';
-				}
-				break;
-			}
-			printf("Item não encontrado !")	;
-		}
-	}
+            }
+        }
+
+    }else {
+        // The list is full
+
+    }
+
+}
+
+void removeItem(ARRLST ** list, char * item, int index) {
+
+
+
+
+}
+
+void removeLastItem(ARRLST * list) {
+    for (int i = 0; i < *list->capacity; ++i) {
+        if (*list->arrList[i] != '\0' && *list->arrList[i++] == '\0') {
+
+
+        }
+
+    }
+
+}
+
+void printItem(char * item){
+
+}
+
+void printIndex(int index) {
+
+}
+
+void printAll() {
+
 }

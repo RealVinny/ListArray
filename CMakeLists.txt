@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.31)
-project(untitled C)
+project(testing C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(untitled arrlst.c)
+add_executable(testing arrlst.c test/testing.c)
