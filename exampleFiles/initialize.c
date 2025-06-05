@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../arrlst.h"
+#include "../src/arrlst.h"
 
 int main() {
 

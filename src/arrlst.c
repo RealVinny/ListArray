@@ -1,8 +1,6 @@
+#include "arrlst.h"
 #include <stdio.h>
 #include <stdlib.h>
-
-#include "arrlst.h"
-
 #include <string.h>
 
 
