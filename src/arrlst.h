@@ -26,4 +26,8 @@ void arrLst_printIndex(ARRLST ** list,int index);
 void arrLst_printItem(ARRLST ** list, const char * item);
 void arrLst_printAll(ARRLST** list);
 
+// Getters for using in other functions
+
+char *arrLst_getItem(ARRLST** list, int index);
+
 #endif

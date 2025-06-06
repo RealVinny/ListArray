@@ -97,3 +97,13 @@ void arrLst_printAll(ARRLST ** list) {
         }
     }
 }
+
+
+char *arrLst_getItem(ARRLST ** list, int index) {
+    char *item = malloc((*list)->nameSize + 1);
+    if (item == NULL) {
+        return NULL;
+    }
+    strcpy(item, (*list)->arrList[index]);
+    return item;
+}
