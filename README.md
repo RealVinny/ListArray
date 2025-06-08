@@ -1,6 +1,6 @@
 # List Array 
 
-An C library for adding, removing and listing items of the given array
+A C library with a type of char array that can be managed on run
 
 ## Description of each function 
 
@@ -50,6 +50,7 @@ Returns the value of the item on the index of the given list
 ### Let's say we want two arrays, one with default sizes and one with our custom size, we do as follow : 
 
 > ARRLST *defaultSized = arrLst_initList();
+
 > ARRLST *customSized = arrLst_customInit(12, 50);
 
 
@@ -64,10 +65,11 @@ Returns the value of the item on the index of the given list
 
 #### Now we have added one item in each of our lists, Example item 1 and 2, let's see how we can print those items
 
+##### * You can see both these functions being used [here](/exampleFiles/managingItens.c) and [here](/exampleFiles/full.c)
 
 ## Printing items 
 
-### For printing and using items in our array, we can use the following functions : 
+j## For printing and using items in our array, we can use the following functions : 
 
 > arrList_printIndex(&defaultSized, 0); 
 
@@ -81,6 +83,8 @@ Returns the value of the item on the index of the given list
 
 #### ^ This will print all the items names without giving their indexes
 
+#### You can see these functions in use [here](/exampleFiles/listing.c)
+
 ## Removing Items
 
 ###  Now that we have put and printed the items of our array, let's delete them from the array using the following functions : 
@@ -93,6 +97,7 @@ Returns the value of the item on the index of the given list
 
 #### This function will remove the last item of the given array without checking name, index or confirmation
 
+#### You can see these functions being used [here](/exampleFiles/managingItens.c)
 
 ## Special Functions 
 

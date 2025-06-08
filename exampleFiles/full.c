@@ -13,6 +13,7 @@ int main() {
     printf("Give a new item to be added");
     scanf("%150s", buffer);
 
+    printf("%s", arrLst_getItem(&stdarr, 0));
     arrLst_addItem(&stdarr, buffer);
     arrLst_printAll(&stdarr);
 

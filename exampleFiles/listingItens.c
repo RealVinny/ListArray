@@ -16,4 +16,7 @@ int main() {
     arrLst_printIndex(&stdarr, 1);
     arrLst_printAll(&stdarr);
 
+
+    printf("%s", arrLst_getItem(&stdarr, 0));
+
 }
