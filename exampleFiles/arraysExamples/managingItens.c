@@ -4,7 +4,7 @@
 
 int main() {
 
-    ARRLST *stdarr = arrLst_initList(); // Starting arr with standard allocation of sizes
+    MArray *stdarr = arrLst_initList(); // Starting arr with standard allocation of sizes
     char item1[25] = "example item1";
     char item2[25] = "example item2";
 

@@ -4,8 +4,10 @@
 #include <string.h>
 
 
-ARRLST *arrLst_initList() {
-    ARRLST *list = (ARRLST *)malloc(sizeof(ARRLST));
+typedef MArray arrlst;
+
+arrlst *arrLst_initList() {
+    arrlst *list = (arrlst *)malloc(sizeof(MArray));
     list->capacity = 100;
     list->nameSize = 50;
     list->quantity = 0;
@@ -13,8 +15,8 @@ ARRLST *arrLst_initList() {
     return list;
 }
 
-ARRLST *arrLst_customInit(int listSize, int namesSize) {
-    ARRLST *list = (ARRLST *)malloc(sizeof(ARRLST));
+arrlst *arrLst_customInit(int listSize, int namesSize) {
+    arrlst *list = (arrlst *)malloc(sizeof(MArray));
     list->capacity = listSize;
     list->nameSize = namesSize;
     list->quantity = 0;
@@ -22,7 +24,7 @@ ARRLST *arrLst_customInit(int listSize, int namesSize) {
    return list;
 }
 
-void arrLst_addItem(ARRLST ** list, char * item) {
+void arrLst_addItem(arrlst ** list, char * item) {
 
     if ((*list)->capacity - (*list)->quantity > 0) {
 
@@ -47,14 +49,14 @@ void arrLst_addItem(ARRLST ** list, char * item) {
 
 }
 
-void arrLst_removeItem(ARRLST ** list, char * item, int index) {
+void arrLst_removeItem(arrlst ** list, char * item, int index) {
 
 
 
 
 }
 
-void arrLst_removeLastItem(ARRLST ** list) {
+void arrLst_removeLastItem(arrlst ** list) {
 
     for (int i = (*list)->capacity- 1; i >= 0; --i) {
 
@@ -71,7 +73,7 @@ void arrLst_removeLastItem(ARRLST ** list) {
 
 }
 
-void arrLst_printItem(ARRLST ** list, const char * item){
+void arrLst_printItem(arrlst ** list, const char * item){
 
     for (int i = 0; i < (*list)->quantity; ++i) {
 
@@ -84,11 +86,11 @@ void arrLst_printItem(ARRLST ** list, const char * item){
     }
 }
 
-void arrLst_printIndex(ARRLST ** list, int index) {
+void arrLst_printIndex(arrlst ** list, int index) {
     printf("%s\n", (*list)->arrList[index]);
 }
 
-void arrLst_printAll(ARRLST ** list) {
+void arrLst_printAll(arrlst ** list) {
 
     for (int i = 0; i < (*list)->capacity; ++i) {
 
@@ -99,7 +101,7 @@ void arrLst_printAll(ARRLST ** list) {
 }
 
 
-char *arrLst_getItem(ARRLST ** list, int index) {
+char *arrLst_getItem(arrlst ** list, int index) {
     char *item = malloc((*list)->nameSize + 1);
     if (item == NULL) {
         return NULL;
