@@ -3,12 +3,12 @@
 #include <stddef.h>
 
 
-typedef struct {
+typedef struct Node {
     int value;
     struct Node *next;
     struct Node *prev;
 
-} Node ;
+} doubleNode ;
 
 typedef struct {
     struct Node *head;
@@ -18,9 +18,9 @@ typedef struct {
 } DoublyLinkedList;
 
 
-dll_init(DoublyLinkedList);
+void dll_init(DoublyLinkedList);
 
-dll_free(DoublyLinkedList);
+void dll_free(DoublyLinkedList);
 
 
 #endif //LINKEDLISTS_H

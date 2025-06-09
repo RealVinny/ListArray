@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../Include/vdskit.h"
+#include "../include/vdskit.h"
 
 
 
