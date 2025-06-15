@@ -69,7 +69,7 @@ Returns the value of the item on the index of the given list
 
 ## Printing items 
 
-j## For printing and using items in our array, we can use the following functions : 
+## For printing and using items in our array, we can use the following functions : 
 
 > arrList_printIndex(&defaultSized, 0); 
 
