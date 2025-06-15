@@ -30,6 +30,7 @@ singleLinkedList sll_init(singleLinkedList *list, size_t size) {
     list->dataSize = size;
     list -> head = NULL;
     list -> tail = NULL;
+
     return *list;
 
 }
@@ -71,18 +72,17 @@ int sll_size(const singleLinkedList * list) {
 // Inserting items in the linked list
 void sll_push_front(singleLinkedList * list, struct singleNode * sNode) {
 
-        sNode->next = list -> head;
+        struct singleNode * newNode = malloc(sizeof(struct singleNode));
+        newNode = list->head;
         list -> head = sNode;
+        sNode->next = newNode;
         list->size++;
         if (list->size == 1) {
             list -> tail = sNode;
         }else if (list->size > 1) {
-
             struct singleNode * crr = list->head;
-
-
-
         }
+
 }
 
 void sll_push_back(singleLinkedList * list, struct singleNode * node) {
@@ -198,14 +198,10 @@ const char *sll_get_data(singleLinkedList *list, struct singleNode *node) {
 
 void sll_print(singleLinkedList * list) {
 
-    struct singleNode * curr = list -> head;
-
-    while (curr->next != NULL) {
+    struct singleNode *curr = list->head;
+    while (curr != NULL) {
         printf("%s\n", curr->data);
         curr = curr -> next;
-        if (curr->next == NULL) {
-            break;
-        }
     }
 
 }
