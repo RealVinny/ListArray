@@ -1,109 +1,124 @@
-# List Array 
+# vdsKit 🧠
 
-A C library with a type of char array that can be managed on run
+Biblioteca em C focada em **estruturas de dados básicas e genéricas** — atualmente com:
 
-## Description of each function 
+- ✅ *ArrayList* (lista dinâmica baseada em array)  
+- 🔗 *Singly Linked List* (lista encadeada simples)
 
-#### arrLst_initList()
+Projeto sob licença **GPL‑3.0**, desenvolvido por Vinicius Pinheiro (RealVinny).
 
-Used for starting an array, the deafult array size is 100 items with 50 characters on it's names
+---
 
-#### arrLst_custonInit(int listSize, int nameSize)
+## 🛠 Funcionalidades
 
-Used for initializing an array with custom capacity and name size
+### 1. ArrayList (`array.*`)
+- Criação e destruição de listas
+- Inserção no fim (`push_back`)
+- Remoção do fim (`pop_back`)
+- Acesso por índice (`get_at`)
+- Consulta do tamanho (`size`)
+- Impressão para debug (`print_array`)
 
-#### arrLst_addItem(MArray ** list, char * item)
+### 2. Singly Linked List (`sll_*`)
+- Inicialização com tamanho de dado genérico (`sll_init(size_t data_size)`)
+- Inserção no início/fim (`sll_push_front`, `sll_push_back`)
+- Inserção/remocão em posição específica (`sll_insert_at`, `sll_remove_at`)
+- Remoção no início/fim da lista (`sll_pop_front`, `sll_pop_back`)
+- Busca de valor (`sll_find_first`, `sll_find_last`)
+- Acesso por posição (`sll_get_at`)
+- Liberação da lista inteira (`sll_free`)
+- Impressão para visualização (`sll_print`)
+- Consulta do tamanho (`sll_size`)
 
-Used for adding an item to the last position of the list
+---
 
-#### arrLst_removeItem(MArray ** list, char * Item, int index)
+## ✅ Por que usar o vdsKit?
 
-Used to remove an item from the list, only removes it if the name and index are correct to prevent errors
+- 📦 **Tudo em C puro** — sem dependências externas.
+- 🧩 **Genérico** — tipos definidos só no momento da criação.
+- 🛡 **GPL‑3.0** — garante liberdade de uso e colaboração com mantida da licença.
+- 💻 **Ideal para aprendizado e projetos técnicos** — especialmente se manusear ponteiros e estrutura de dados.
 
-#### arrLst_removeLastItem(MArray ** list)
+---
 
-Used to remove the last item from the list
+## 🚀 Exemplo rápido
 
-#### arrLst_printIndex(MArray ** list, int index)
+### Criando um array de `int`:
+```c
+ArrayList arr;
+array_init(&arr, sizeof(int));
+int x = 42;
+array_push_back(&arr, &x);
+printf("%d\n", *(int*)array_get_at(&arr, 0));
+array_free(&arr);
+```
 
-Used to print the item from the list on the given index
+### Criando uma linked list de `char*`:
+```c
+singleLinkedList list;
+sll_init(&list, sizeof(char*));
+char* s = strdup("Vinny");
+sll_push_front(&list, &s);
+sll_print(&list);
+sll_free(&list);
+free(s);  // liberação do dado alocado
+```
 
-#### arrLst_printItem(MArray ** list, const char * item) 
+---
 
-Used to print elements of the same name on the given list, showing the item's name and index on the list
+## 🧱 Estrutura do projeto
 
-#### arrLst_printAll(MArray ** list)
+```
+vdsKit/
+├── include/
+│   ├── vdsKit.h        ← header principal
+│   ├── array.h
+│   └── sll.h
+├── src/
+│   ├── array.c
+│   └── sll.c
+├── test/
+│   ├── test_array.c
+│   └── test_sll.c
+├── CMakeLists.txt
+├── README.md
+└── LICENSE
+```
 
-Used to list all the items of the given list
+---
 
-#### arrLSt_getItem(MArray ** list, int index);
+## 🎟 Como compilar e testar
 
-Returns the value of the item on the index of the given list 
+```bash
+mkdir build && cd build
+cmake ..
+make
+./test_array       # testa array
+./test_sll         # testa listas encadeadas
+```
 
+---
 
-# Examples of usage
+## 🧩 Contribuindo
 
-### If you want, you can go directly to the example files [here](/exampleFiles/)
+- Use git flow: `dev`, `sll`, `array`, `release`...
+- Faça PRs e escreva testes para novas funções
+- Mantenha o estilo e a documentação padrão
 
-## Initializing our array
+---
 
-### Let's say we want two arrays, one with default sizes and one with our custom size, we do as follow : 
+## 📝 Sobre Licença
 
-> MArray *defaultSized = arrLst_initList();
+Este projeto é licenciado sob **GPL‑3.0**. Isso significa:
+- Pode usar, modificar e redistribuir
+- Obras derivadas devem permanecer livres e com GPL‑3.0
+- Cópia da licença legalmente vinculante incluída em `LICENSE`
 
-> MArray *customSized = arrLst_customInit(12, 50);
+---
 
+## ✅ Próximos passos
 
-#### With those, now we have defaultSized with a capacity of 100 items, and 50 characters long names and customSized with capacity for 12 items with 50 characters long names
+- Suporte à **Doubly Linked List**
+- Implementação de **Stack** e **Queue**
 
-## Adding items to our array
-
-### Now that we created our array, let's add some items to them, for it, we do as follow :
-
-> arrLst_addItem(&defaultSized, "Example item1");
-> arrLst_addItem(&customSized, "Example item2");
-
-#### Now we have added one item in each of our lists, Example item 1 and 2, let's see how we can print those items
-
-##### * You can see both these functions being used [here](/exampleFiles/arraysExamples/managingItens.c) and [here](/exampleFiles/arraysExamples/full.c)
-
-## Printing items 
-
-j## For printing and using items in our array, we can use the following functions : 
-
-> arrList_printIndex(&defaultSized, 0); 
-
-#### ^ This will print the index of our item, if the index is empty, it will return nothing
-
-> arrLst_printItem(&customSized, "Example Item3");7
-
-#### ^ This will print all the items that are equal to the given item with their respective index
-
-> arrLst_printAll(&defaultSized);
-
-#### ^ This will print all the items names without giving their indexes
-
-#### You can see these functions in use [here](/exampleFiles/listing.c)
-
-## Removing Items
-
-###  Now that we have put and printed the items of our array, let's delete them from the array using the following functions : 
-
-> arrLst_removeItem(&defaultSized, "Example item1", 0);
-
-#### This funcion will remove an item from the array only if the name and index are the same as the one given in the function
-
-> arrLst_removeLastItem(&customSized);
-
-#### This function will remove the last item of the given array without checking name, index or confirmation
-
-#### You can see these functions being used [here](/exampleFiles/arraysExamples/managingItens.c)
-
-## Special Functions 
-
-### You can use the following funcions with C standard functions : 
-
-
-> arrLst_getItem(&defaultSized, 0);
-
-#### This will not print the value of the index, but will return it's value to be used in a function argument 
+---
