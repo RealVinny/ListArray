@@ -32,7 +32,7 @@ void sll_set_node_data(struct singleNode  * node, void * data);
 singleLinkedList sll_init(singleLinkedList *list, size_t size);
 int sll_free(singleLinkedList * list);
 int sll_is_empty(singleLinkedList * list);
-int sll_size(singleLinkedList * list);
+int sll_size(const singleLinkedList * list);
 
 // Inserting items in the linked list
 void sll_push_front(singleLinkedList * list, struct singleNode * node);

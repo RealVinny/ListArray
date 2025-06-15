@@ -7,12 +7,16 @@
 
 
 void nodeInit(struct singleNode * node) {
+
    node->data = NULL;
     node->next = NULL;
+
 }
 
 void sll_set_node_data(struct singleNode * node, void * data) {
+
    node->data = data;
+
 }
 
 void sll_set_node_pointer(struct singleNode * node, struct singleNode *pNode) {
@@ -22,13 +26,16 @@ void sll_set_node_pointer(struct singleNode * node, struct singleNode *pNode) {
 }
 
 singleLinkedList sll_init(singleLinkedList *list, size_t size) {
+
     list->dataSize = size;
     list -> head = NULL;
     list -> tail = NULL;
     return *list;
+
 }
 
 int sll_free(singleLinkedList * list) {
+
         free(list->head);
         list->head = NULL;
         free(list->tail);
@@ -39,6 +46,7 @@ int sll_free(singleLinkedList * list) {
 
 
 int sll_is_empty(singleLinkedList * list) {
+
     if (list -> head == NULL) {
         return 1;
     }else {
@@ -46,28 +54,35 @@ int sll_is_empty(singleLinkedList * list) {
     }
 }
 
-int sll_size(singleLinkedList * list) {
+int sll_size(const singleLinkedList * list) {
 
-    int *cnt = (int*) malloc(10);
+    const struct singleNode * crr = list -> head;
 
-    *cnt = 0;
+    int cnt = 0;
 
-    while (NULL != list->head->next) {
-        *cnt++;
-    }
+        while (crr != NULL) {
+            cnt++;
+        }
 
-    return *cnt;
+    return cnt;
 
 }
 
 // Inserting items in the linked list
 void sll_push_front(singleLinkedList * list, struct singleNode * sNode) {
 
-    list -> head = sNode;
-    sNode -> next = list -> tail;
+        sNode->next = list -> head;
+        list -> head = sNode;
+        list->size++;
+        if (list->size == 1) {
+            list -> tail = sNode;
+        }else if (list->size > 1) {
+
+            struct singleNode * crr = list->head;
 
 
 
+        }
 }
 
 void sll_push_back(singleLinkedList * list, struct singleNode * node) {
@@ -95,22 +110,28 @@ void sll_insert_at(singleLinkedList * list, struct singleNode * indexNode, struc
 
 void sll_remove_at(singleLinkedList * list, struct singleNode * node) {
 
-    struct singleNode *curr = list -> head;
+   struct singleNode *curr = list -> head;
 
-    while (curr -> next != node) {
-        curr = curr->next;
+    if (curr == node) {
+        list -> head = curr -> next;
+
+    }else if (curr == NULL) {
+
+        curr = list -> tail;
+
     }
-
-    curr->next = NULL;
 
 
 }
 
 void sll_pop_front(singleLinkedList * list) {
+
     list -> head = list -> head -> next;
+
 }
 
 void sll_pop_back(singleLinkedList * list) {
+
     struct singleNode *curr = list -> head;
     while (curr -> next != NULL) {
         curr = curr -> next;
@@ -121,18 +142,25 @@ void sll_pop_back(singleLinkedList * list) {
 }
 
 void sll_remove_value(singleLinkedList * list, void * data) {
+
     struct singleNode * curr = list->head;
 
-    while (curr->data != data) {
-        curr = curr->next;
+    while (curr != NULL) {
+
+        curr = curr -> next;
+        if (curr->data == data) {
+            curr->data = NULL;
+        }
+
     }
 
-    curr->data = NULL;
+
 
 }
 
 // Acessing the list
 struct singleNode sll_get_at(singleLinkedList * list, struct singleNode * node) {
+
     struct singleNode *curr = list->head;
 
     while (curr != node) {
@@ -144,6 +172,7 @@ struct singleNode sll_get_at(singleLinkedList * list, struct singleNode * node) 
 }
 
 struct singleNode sll_find(singleLinkedList * list, void * data) {
+
     struct singleNode *curr = list->head;
 
     while (curr->data != data) {
@@ -168,6 +197,16 @@ const char *sll_get_data(singleLinkedList *list, struct singleNode *node) {
 // Utility
 
 void sll_print(singleLinkedList * list) {
+
+    struct singleNode * curr = list -> head;
+
+    while (curr->next != NULL) {
+        printf("%s\n", curr->data);
+        curr = curr -> next;
+        if (curr->next == NULL) {
+            break;
+        }
+    }
 
 }
 
