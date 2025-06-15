@@ -5,6 +5,7 @@
 #ifndef SINGLELINKED_H
 #define SINGLELINKED_H
 #include <stddef.h>
+#include <stdlib.h>
 
 struct singleNode {
     void *data;
@@ -21,8 +22,13 @@ typedef struct {
 
 } singleLinkedList;
 
-// Initializing and managing the linkedList
 
+// Managing nodes
+void nodeInit(struct singleNode *node);
+void sll_set_node_data(struct singleNode  * node, void * data);
+
+
+// Initializing and managing the linkedList
 singleLinkedList sll_init(singleLinkedList *list, size_t size);
 int sll_free(singleLinkedList * list);
 int sll_is_empty(singleLinkedList * list);
@@ -42,6 +48,8 @@ void sll_remove_value(singleLinkedList * list, void * data);
 // Acessing the list
 struct singleNode sll_get_at(singleLinkedList * list, struct singleNode * node);
 struct singleNode sll_find(singleLinkedList * list, void * data);
+
+const char *sll_get_data(singleLinkedList * list, struct singleNode *node);
 
 // Utility
 

@@ -4,6 +4,23 @@
 #include <string.h>
 
 
+
+
+void nodeInit(struct singleNode * node) {
+   node->data = NULL;
+    node->next = NULL;
+}
+
+void sll_set_node_data(struct singleNode * node, void * data) {
+   node->data = data;
+}
+
+void sll_set_node_pointer(struct singleNode * node, struct singleNode *pNode) {
+
+    node->next = pNode;
+
+}
+
 singleLinkedList sll_init(singleLinkedList *list, size_t size) {
     list->dataSize = size;
     list -> head = NULL;
@@ -45,9 +62,10 @@ int sll_size(singleLinkedList * list) {
 
 // Inserting items in the linked list
 void sll_push_front(singleLinkedList * list, struct singleNode * sNode) {
-     
-    sNode-> next = list -> head;
+
     list -> head = sNode;
+    sNode -> next = list -> tail;
+
 
 
 }
@@ -133,6 +151,17 @@ struct singleNode sll_find(singleLinkedList * list, void * data) {
     }
 
     return *curr;
+
+}
+
+const char *sll_get_data(singleLinkedList *list, struct singleNode *node) {
+
+
+        if (node->data == NULL) {
+            return NULL;
+        }else {
+                return node->data;
+        }
 
 }
 
