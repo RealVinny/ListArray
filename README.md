@@ -128,3 +128,6 @@ Este projeto é licenciado sob **GPL‑3.0**. Isso significa:
 ### 🎯 Conflito anterior: ListArray
 
 Seu repositório anterior **ListArray** foi incorporado como parte do módulo `array` do vdsKit. O foco agora é oferecer uma lib completa e unificada de estrutura de dados.
+
+### Certificações : 
+[![CodeQL Advanced](https://github.com/RealVinny/VDSKit/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/RealVinny/VDSKit/actions/workflows/codeql.yml)
