@@ -51,10 +51,11 @@ int x = 42;
 array_push_back(&arr, &x);
 printf("%d\n", *(int*)array_get_at(&arr, 0));
 array_free(&arr);
+
 ```
 
-Create a char* Singly Linked List:
-
+### Create a char* Singly Linked List:
+```c
 singleLinkedList list;
 sll_init(&list, sizeof(char*));
 char* s = strdup("Vinny");
@@ -63,6 +64,7 @@ sll_print(&list);
 sll_free(&list);
 free(s);  // free the actual string
 
+```
 
 ---
 
