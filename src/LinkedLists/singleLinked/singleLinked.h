@@ -7,11 +7,11 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-struct singleNode {
+typedef struct  {
     void *data;
     struct singleNode *next;
 
-};
+}singleNode;
 
 
 typedef struct {
@@ -25,7 +25,7 @@ typedef struct {
 
 // Managing nodes
 void nodeInit(struct singleNode *node);
-void sll_set_node_data(struct singleNode  * node, void * data);
+void dll_set_node_data(struct singleNode  * node, void * data);
 
 
 // Initializing and managing the linkedList

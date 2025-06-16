@@ -13,7 +13,7 @@ void nodeInit(struct singleNode * node) {
 
 }
 
-void sll_set_node_data(struct singleNode * node, void * data) {
+void dll_set_node_data(struct singleNode * node, void * data) {
 
    node->data = data;
 
@@ -72,8 +72,7 @@ int sll_size(const singleLinkedList * list) {
 // Inserting items in the linked list
 void sll_push_front(singleLinkedList * list, struct singleNode * sNode) {
 
-        struct singleNode * newNode = malloc(sizeof(struct singleNode));
-        newNode = list->head;
+        struct singleNode * newNode =  list->head;
         list -> head = sNode;
         sNode->next = newNode;
         list->size++;
