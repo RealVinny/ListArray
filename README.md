@@ -1,4 +1,4 @@
-.# VDSKit
+# VDSKit
 
 A C library focused on **basic, generic data structures** — currently featuring:
 
