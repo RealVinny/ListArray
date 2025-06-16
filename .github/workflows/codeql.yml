@@ -55,15 +55,6 @@ jobs:
         # your codebase is analyzed, see https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages
     steps:
 
-    - name: Manual Build
-        language: c-cpp
-          build-mode: manual  
-            run: |
-              mkdir -p build
-              cd build
-              cmake ..
-              make
-              
     - name: Checkout repository
       uses: actions/checkout@v4
 
