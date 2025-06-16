@@ -1,4 +1,4 @@
-# vdsKit 🧠
+# VDSKit
 
 Biblioteca em C focada em **estruturas de dados básicas e genéricas** — atualmente com:
 
