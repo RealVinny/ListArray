@@ -1,49 +1,49 @@
 # VDSKit
 
-Biblioteca em C focada em **estruturas de dados básicas e genéricas** — atualmente com:
+A C library focused on **basic, generic data structures** — currently featuring:
 
-- ✅ *ArrayList* (lista dinâmica baseada em array)  
-- 🔗 *Singly Linked List* (lista encadeada simples)
+- ✅ *ArrayList* (dynamic array-based list)  
+- 🔗 *Singly Linked List*
 
-Projeto sob licença **GPL‑3.0**, desenvolvido por Vinicius Pinheiro (RealVinny).
+Licensed under **GPL‑3.0**, developed by Vinicius Pinheiro (RealVinny).
 
 ---
 
-## 🛠 Funcionalidades
+## 🛠 Features
 
 ### 1. ArrayList (`array.*`)
-- Criação e destruição de listas
-- Inserção no fim (`push_back`)
-- Remoção do fim (`pop_back`)
-- Acesso por índice (`get_at`)
-- Consulta do tamanho (`size`)
-- Impressão para debug (`print_array`)
+- Creation and destruction of lists
+- Append to end (`push_back`)
+- Remove from end (`pop_back`)
+- Indexed access (`get_at`)
+- Size query (`size`)
+- Debug printing (`print_array`)
 
 ### 2. Singly Linked List (`sll_*`)
-- Inicialização com tamanho de dado genérico (`sll_init(size_t data_size)`)
-- Inserção no início/fim (`sll_push_front`, `sll_push_back`)
-- Inserção/remocão em posição específica (`sll_insert_at`, `sll_remove_at`)
-- Remoção no início/fim da lista (`sll_pop_front`, `sll_pop_back`)
-- Busca de valor (`sll_find_first`, `sll_find_last`)
-- Acesso por posição (`sll_get_at`)
-- Liberação da lista inteira (`sll_free`)
-- Impressão para visualização (`sll_print`)
-- Consulta do tamanho (`sll_size`)
+- Initialization with generic data size (`sll_init(size_t data_size)`)
+- Add to front/end (`sll_push_front`, `sll_push_back`)
+- Insert/remove at specific position (`sll_insert_at`, `sll_remove_at`)
+- Remove front/end (`sll_pop_front`, `sll_pop_back`)
+- Value search (`sll_find_first`, `sll_find_last`)
+- Get element at index (`sll_get_at`)
+- Free entire list (`sll_free`)
+- Debug print (`sll_print`)
+- Size query (`sll_size`)
 
 ---
 
-## ✅ Por que usar o vdsKit?
+## ✅ Why use vdsKit?
 
-- 📦 **Tudo em C puro** — sem dependências externas.
-- 🧩 **Genérico** — tipos definidos só no momento da criação.
-- 🛡 **GPL‑3.0** — garante liberdade de uso e colaboração com mantida da licença.
-- 💻 **Ideal para aprendizado e projetos técnicos** — especialmente se manusear ponteiros e estrutura de dados.
+- 📦 **Pure C code** — no external dependencies
+- 🧩 **Generic** — data types specified only at initialization
+- 🛡 **GPL‑3.0 license** — ensures freedom of use and collaboration
+- 💻 **Great for learning and low-level C projects**, especially with pointers and data structures
 
 ---
 
-## 🚀 Exemplo rápido
+## 🚀 Quick Example
 
-### Criando um array de `int`:
+### Create an `int` ArrayList:
 ```c
 ArrayList arr;
 array_init(&arr, sizeof(int));
@@ -51,27 +51,25 @@ int x = 42;
 array_push_back(&arr, &x);
 printf("%d\n", *(int*)array_get_at(&arr, 0));
 array_free(&arr);
-```
 
-### Criando uma linked list de `char*`:
-```c
+Create a char* Singly Linked List:
+
 singleLinkedList list;
 sll_init(&list, sizeof(char*));
 char* s = strdup("Vinny");
 sll_push_front(&list, &s);
 sll_print(&list);
 sll_free(&list);
-free(s);  // liberação do dado alocado
-```
+free(s);  // free the actual string
+
 
 ---
 
-## 🧱 Estrutura do projeto
+🧱 Project Structure
 
-```
 vdsKit/
 ├── include/
-│   ├── vdsKit.h        ← header principal
+│   ├── vdsKit.h      ← Main umbrella header
 │   ├── array.h
 │   └── sll.h
 ├── src/
@@ -83,51 +81,66 @@ vdsKit/
 ├── CMakeLists.txt
 ├── README.md
 └── LICENSE
-```
+
 
 ---
 
-## 🎟 Como compilar e testar
+🎟 Build and Test
 
-```bash
 mkdir build && cd build
 cmake ..
 make
-./test_array       # testa array
-./test_sll         # testa listas encadeadas
-```
+./test_array   # runs array tests
+./test_sll     # runs singly linked list tests
+
 
 ---
 
-## 🧩 Contribuindo
+🧩 Contributing
 
-- Use git flow: `dev`, `sll`, `array`, `release`...
-- Faça PRs e escreva testes para novas funções
-- Mantenha o estilo e a documentação padrão
+Use branches like dev, sll, array, release
 
----
+Submit PRs with new functions & tests
 
-## 📝 Sobre Licença
+Follow existing style and documentation guidelines
 
-Este projeto é licenciado sob **GPL‑3.0**. Isso significa:
-- Pode usar, modificar e redistribuir
-- Obras derivadas devem permanecer livres e com GPL‑3.0
-- Cópia da licença legalmente vinculante incluída em `LICENSE`
+
 
 ---
 
-## ✅ Próximos passos
+📝 License
 
-- Suporte à **Doubly Linked List**
-- Implementação de **Stack** e **Queue**
-- Adição de **ordenadores** e **filtros genéricos**
-- Suporte a **macros ou `_Generic`** para maior segurança de tipo
+This project is licensed under GPL‑3.0, which means:
+
+Free to use, modify, and redistribute
+
+Any derivative works must remain GPL‑3.0
+
+Full license text included in LICENSE
+
+
 
 ---
 
-### 🎯 Conflito anterior: ListArray
+✅ What's Next
 
-Seu repositório anterior **ListArray** foi incorporado como parte do módulo `array` do vdsKit. O foco agora é oferecer uma lib completa e unificada de estrutura de dados.
+Add support for Doubly Linked List
 
-### Certificações : 
-[![CodeQL Advanced](https://github.com/RealVinny/VDSKit/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/RealVinny/VDSKit/actions/workflows/codeql.yml)
+Implement Stack and Queue
+
+Add generic sorters/filters
+
+Consider using macros or _Generic for more type safety
+
+
+
+---
+
+🎯 On Legacy Projects
+
+Your previous project, ListArray, has been merged into the array module of vdsKit. Going forward, vdsKit will offer a unified, full-featured data-structure library.
+
+---
+
+If you’d like, I can help convert this into a polished PR or adjust any details—just say the word!
+
