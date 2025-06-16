@@ -141,6 +141,3 @@ Consider using macros or _Generic for more type safety
 Your previous project, ListArray, has been merged into the array module of vdsKit. Going forward, vdsKit will offer a unified, full-featured data-structure library.
 
 ---
-
-If you’d like, I can help convert this into a polished PR or adjust any details—just say the word!
-
