@@ -1,4 +1,4 @@
-# VDSKit
+.# VDSKit
 
 A C library focused on **basic, generic data structures** — currently featuring:
 
@@ -66,6 +66,7 @@ free(s);  // free the actual string
 
 ```
 
+
 ---
 
 🧱 Project Structure
@@ -84,7 +85,6 @@ vdsKit/
 ├── CMakeLists.txt
 ├── README.md
 └── LICENSE
-
 
 ---
 
