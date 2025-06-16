@@ -51,6 +51,7 @@ int x = 42;
 array_push_back(&arr, &x);
 printf("%d\n", *(int*)array_get_at(&arr, 0));
 array_free(&arr);
+```
 
 Create a char* Singly Linked List:
 
