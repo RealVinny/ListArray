@@ -19,7 +19,7 @@ MArray *arrLst_initList();
 MArray *arrLst_customInit(int listSize, int nameSize);
 
 // Managing objects in the list
-void arrLst_addItem(MArray ** list, const char * item);
+void arrLst_addItem(MArray ** list, char * item);
 void arrLst_removeItem(MArray ** list, char * Item, int index);
 void arrLst_removeLastItem(MArray ** list);
 
