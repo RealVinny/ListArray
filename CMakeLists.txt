@@ -1,17 +1,21 @@
-cmake_minimum_required(VERSION 3.31)
-project(${PROJECT_NAME} C)
+cmake_minimum_required(VERSION 3.15)
+project(VDSKit C)
 
-set(CMAKE_C_STANDARD 11)
+# Defina padrão de C
+set(CMAKE_C_STANDARD 99)
 
-add_library(arrlst STATIC src/Arrays/Arrays.c
-        src/LinkedLists/doubeLinked/doubleLinked.h
-        src/LinkedLists/singleLinked/singleLinked.c
-        src/LinkedLists/singleLinked/singleLinked.h
-        exampleFiles/singleLinked/initializing.c
-        testing.c)
+# Inclui headers
+include_directories(include)
 
-target_include_directories(arrlst PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# Adiciona todos os arquivos .c de src/
+file(GLOB_RECURSE SOURCES "src/**/*.c")
 
-add_executable(tests testing.c)
+# Cria a biblioteca estática
+add_library(vdskit STATIC ${SOURCES})
 
-target_link_libraries(tests PRIVATE arrlst)
+# Compila o executável de teste
+add_executable(testing testing.c)
+target_link_libraries(testing vdskit)
+
+# Exibe mensagem pós-compilação
+message(STATUS "VDSKit configurado. Executável: testing, Biblioteca: vdskit")
