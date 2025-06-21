@@ -4,27 +4,46 @@
 #include <string.h>
 
 
-typedef MArray arrlst;
+MArray *arrLst_initList() {
 
-arrlst *arrLst_initList() {
-    arrlst *list = (arrlst *)malloc(sizeof(MArray));
-    list->capacity = 100;
-    list->nameSize = 50;
-    list->quantity = 0;
-    list->arrList = calloc(list->capacity, list->nameSize);
+    MArray *list = (MArray *) malloc(sizeof(MArray));
+
+    if (!list) {
+        return NULL;
+    }
+
+    list->capacity;
+    list->nameSize;
+    list->quantity;
+
+    list->arrList = malloc(sizeof(list->capacity * list->nameSize));
+
+    if (!list->arrList) {
+        free(list);
+        printf("Não foi possivel criar a lista por conta de falta de memoria!\n");
+        return NULL;
+    }
+
     return list;
 }
 
-arrlst *arrLst_customInit(int listSize, int namesSize) {
-    arrlst *list = (arrlst *)malloc(sizeof(MArray));
+MArray *arrLst_customInit(int listSize, int namesSize) {
+    MArray *list = (MArray *)malloc(sizeof(MArray));
+    if (!list) {
+        return NULL;
+    }
     list->capacity = listSize;
     list->nameSize = namesSize;
     list->quantity = 0;
     list->arrList = calloc(list->capacity, list->nameSize);
+    if (!list->arrList) {
+        free(list);
+        return NULL;
+    }
    return list;
 }
 
-void arrLst_addItem(arrlst ** list, char * item) {
+void arrLst_addItem(MArray ** list, const char * item) {
 
     if ((*list)->capacity - (*list)->quantity > 0) {
 
@@ -49,14 +68,14 @@ void arrLst_addItem(arrlst ** list, char * item) {
 
 }
 
-void arrLst_removeItem(arrlst ** list, char * item, int index) {
+void arrLst_removeItem(MArray ** list, char * item, int index) {
 
 
 
 
 }
 
-void arrLst_removeLastItem(arrlst ** list) {
+void arrLst_removeLastItem(MArray ** list) {
 
     for (int i = (*list)->capacity- 1; i >= 0; --i) {
 
@@ -73,7 +92,7 @@ void arrLst_removeLastItem(arrlst ** list) {
 
 }
 
-void arrLst_printItem(arrlst ** list, const char * item){
+void arrLst_printItem(MArray ** list, const char * item){
 
     for (int i = 0; i < (*list)->quantity; ++i) {
 
@@ -86,11 +105,11 @@ void arrLst_printItem(arrlst ** list, const char * item){
     }
 }
 
-void arrLst_printIndex(arrlst ** list, int index) {
+void arrLst_printIndex(MArray ** list, int index) {
     printf("%s\n", (*list)->arrList[index]);
 }
 
-void arrLst_printAll(arrlst ** list) {
+void arrLst_printAll(MArray ** list) {
 
     for (int i = 0; i < (*list)->capacity; ++i) {
 
@@ -101,7 +120,7 @@ void arrLst_printAll(arrlst ** list) {
 }
 
 
-char *arrLst_getItem(arrlst ** list, int index) {
+char *arrLst_getItem(MArray ** list, int index) {
     char *item = malloc((*list)->nameSize + 1);
     if (item == NULL) {
         return NULL;

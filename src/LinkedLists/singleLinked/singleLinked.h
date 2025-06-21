@@ -7,16 +7,16 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-struct singleNode {
+typedef struct  SingleNode{
     void *data;
-    struct singleNode *next;
+    struct SingleNode  *next;
 
-};
+}SingleNode;
 
 
 typedef struct {
-    struct singleNode *head;
-    struct singleNode *tail;
+    SingleNode *head;
+    SingleNode *tail;
     size_t dataSize;
     int size;
 
@@ -24,8 +24,8 @@ typedef struct {
 
 
 // Managing nodes
-void nodeInit(struct singleNode *node);
-void sll_set_node_data(struct singleNode  * node, void * data);
+void nodeInit(SingleNode *node);
+void dll_set_node_data(SingleNode  * node, void * data);
 
 
 // Initializing and managing the linkedList
@@ -35,21 +35,21 @@ int sll_is_empty(singleLinkedList * list);
 int sll_size(const singleLinkedList * list);
 
 // Inserting items in the linked list
-void sll_push_front(singleLinkedList * list, struct singleNode * node);
-void sll_push_back(singleLinkedList * list,  struct singleNode * node);
-void sll_insert_at(singleLinkedList * list, struct singleNode * node, struct singleNode * insert);
+void sll_push_front(singleLinkedList * list, SingleNode * node);
+void sll_push_back(singleLinkedList * list,  SingleNode * node);
+void sll_insert_at(singleLinkedList * list, SingleNode * node, SingleNode * insert);
 
 // Removing items from the list
 void sll_pop_front(singleLinkedList * list);
 void sll_pop_back(singleLinkedList * list);
-void sll_remove_at(singleLinkedList * list, struct singleNode * node);
+void sll_remove_at(singleLinkedList * list, SingleNode * node);
 void sll_remove_value(singleLinkedList * list, void * data);
 
 // Acessing the list
-struct singleNode sll_get_at(singleLinkedList * list, struct singleNode * node);
-struct singleNode sll_find(singleLinkedList * list, void * data);
+SingleNode sll_get_at(singleLinkedList * list, SingleNode * node);
+SingleNode sll_find(singleLinkedList * list, void * data);
 
-const char *sll_get_data(singleLinkedList * list, struct singleNode *node);
+const char *sll_get_data(singleLinkedList * list, SingleNode *node);
 
 // Utility
 
