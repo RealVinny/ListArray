@@ -6,20 +6,20 @@
 
 
 
-void nodeInit(struct singleNode * node) {
+void nodeInit(SingleNode * node) {
 
    node->data = NULL;
     node->next = NULL;
 
 }
 
-void dll_set_node_data(struct singleNode * node, void * data) {
+void dll_set_node_data(SingleNode * node, void * data) {
 
    node->data = data;
 
 }
 
-void sll_set_node_pointer(struct singleNode * node, struct singleNode *pNode) {
+void sll_set_node_pointer(SingleNode * node, SingleNode *pNode) {
 
     node->next = pNode;
 
@@ -57,7 +57,7 @@ int sll_is_empty(singleLinkedList * list) {
 
 int sll_size(const singleLinkedList * list) {
 
-    const struct singleNode * crr = list -> head;
+    const SingleNode * crr = list -> head;
 
     int cnt = 0;
 
@@ -70,21 +70,21 @@ int sll_size(const singleLinkedList * list) {
 }
 
 // Inserting items in the linked list
-void sll_push_front(singleLinkedList * list, struct singleNode * sNode) {
+void sll_push_front(singleLinkedList * list, SingleNode * sNode) {
 
-        struct singleNode * newNode =  list->head;
+        SingleNode * newNode =  list->head;
         list -> head = sNode;
         sNode->next = newNode;
         list->size++;
         if (list->size == 1) {
             list -> tail = sNode;
         }else if (list->size > 1) {
-            struct singleNode * crr = list->head;
+            SingleNode * crr = list->head;
         }
 
 }
 
-void sll_push_back(singleLinkedList * list, struct singleNode * node) {
+void sll_push_back(singleLinkedList * list, SingleNode * node) {
 
     list -> tail = node;
     node -> next = NULL;
@@ -92,9 +92,9 @@ void sll_push_back(singleLinkedList * list, struct singleNode * node) {
 
 }
 
-void sll_insert_at(singleLinkedList * list, struct singleNode * indexNode, struct singleNode * insertNode) {
+void sll_insert_at(singleLinkedList * list, SingleNode * indexNode, SingleNode * insertNode) {
 
-    struct singleNode *curr = list -> head;
+    SingleNode *curr = list -> head;
 
     while (curr-> next != indexNode) {
         curr= curr-> next;
@@ -107,9 +107,9 @@ void sll_insert_at(singleLinkedList * list, struct singleNode * indexNode, struc
 // Removing items from the list
 
 
-void sll_remove_at(singleLinkedList * list, struct singleNode * node) {
+void sll_remove_at(singleLinkedList * list, SingleNode * node) {
 
-   struct singleNode *curr = list -> head;
+   SingleNode *curr = list -> head;
 
     if (curr == node) {
         list -> head = curr -> next;
@@ -131,7 +131,7 @@ void sll_pop_front(singleLinkedList * list) {
 
 void sll_pop_back(singleLinkedList * list) {
 
-    struct singleNode *curr = list -> head;
+    SingleNode *curr = list -> head;
     while (curr -> next != NULL) {
         curr = curr -> next;
     }
@@ -142,7 +142,7 @@ void sll_pop_back(singleLinkedList * list) {
 
 void sll_remove_value(singleLinkedList * list, void * data) {
 
-    struct singleNode * curr = list->head;
+    SingleNode * curr = list->head;
 
     while (curr != NULL) {
 
@@ -158,9 +158,9 @@ void sll_remove_value(singleLinkedList * list, void * data) {
 }
 
 // Acessing the list
-struct singleNode sll_get_at(singleLinkedList * list, struct singleNode * node) {
+SingleNode sll_get_at(singleLinkedList * list, SingleNode * node) {
 
-    struct singleNode *curr = list->head;
+    SingleNode *curr = list->head;
 
     while (curr != node) {
         curr = curr->next;
@@ -170,9 +170,9 @@ struct singleNode sll_get_at(singleLinkedList * list, struct singleNode * node) 
 
 }
 
-struct singleNode sll_find(singleLinkedList * list, void * data) {
+SingleNode sll_find(singleLinkedList * list, void * data) {
 
-    struct singleNode *curr = list->head;
+    SingleNode *curr = list->head;
 
     while (curr->data != data) {
         curr = curr->next;
@@ -182,7 +182,7 @@ struct singleNode sll_find(singleLinkedList * list, void * data) {
 
 }
 
-const char *sll_get_data(singleLinkedList *list, struct singleNode *node) {
+const char *sll_get_data(singleLinkedList *list, SingleNode *node) {
 
 
         if (node->data == NULL) {
@@ -197,7 +197,7 @@ const char *sll_get_data(singleLinkedList *list, struct singleNode *node) {
 
 void sll_print(singleLinkedList * list) {
 
-    struct singleNode *curr = list->head;
+    SingleNode *curr = list->head;
     while (curr != NULL) {
         printf("%s\n", curr->data);
         curr = curr -> next;

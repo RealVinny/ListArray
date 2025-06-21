@@ -3,32 +3,32 @@
 #include <string.h>
 #include "doubleLinked.h"
 
-void nodeInit(Node * node) {
+void nodeInit(DoubleNode* DoubleNode) {
 
-    node->data = NULL;
-    node->next = NULL;
-    node->prev = NULL;
-
-}
-
-void dll_set_node_data(Node * node, void * data) {
-
-   node->data = data;
+    DoubleNode->data = NULL;
+    DoubleNode->next = NULL;
+    DoubleNode->prev = NULL;
 
 }
 
-void dll_set_node_next(Node * node, struct Node *pNode) {
+void dll_set_node_data(DoubleNode * DoubleNode, void * data) {
 
-    node->next = pNode;
+   DoubleNode->data = data;
 
 }
 
-void dll_set_node_prev(Node * node, struct Node *pNode) {
-    node->prev = pNode;
+void dll_set_node_next(DoubleNode* DoubleNode, struct DoubleNode *pNode) {
+
+    DoubleNode->next = pNode;
+
 }
 
-DoublyLinkedList dll_init(DoublyLinkedList *list, size_t dataSize) {
+void dll_set_node_prev(DoubleNode* DoubleNode, struct DoubleNode *pNode) {
+    DoubleNode->prev = pNode;
+}
 
+DoublyLinkedList dll_init(size_t dataSize) {
+    DoublyLinkedList *list = malloc(sizeof(DoublyLinkedList));
     list->datasize = dataSize;
     list -> head = NULL;
     list -> tail = NULL;
@@ -60,7 +60,7 @@ int dll_is_empty(DoublyLinkedList * list) {
 
 int dll_size(const DoublyLinkedList * list) {
 
-    const struct Node * crr = list -> head;
+    const struct DoubleNode * crr = list -> head;
 
     int cnt = 0;
 
@@ -74,9 +74,9 @@ int dll_size(const DoublyLinkedList * list) {
 }
 
 // Inserting items in the linked list
-void sll_push_front(DoublyLinkedList * list, Node * sNode) {
+void sll_push_front(DoublyLinkedList * list, DoubleNode* sNode) {
 
-        Node * newNode =  list->head;
+        DoubleNode * newNode =  list->head;
         list -> head = sNode;
         sNode->prev = NULL;
         sNode->next = newNode;
@@ -85,22 +85,22 @@ void sll_push_front(DoublyLinkedList * list, Node * sNode) {
         if (list->size == 1) {
             list -> tail = sNode;
         }else if (list->size > 1) {
-            Node * crr = list->head;
+            DoubleNode * crr = list->head;
         }
 
 }
 
-void sll_push_back(DoublyLinkedList * list, Node * node) {
+void sll_push_back(DoublyLinkedList * list, DoubleNode * DoubleNode) {
 
-    list -> tail = node;
-    node -> next = NULL;
+    list -> tail = DoubleNode;
+    DoubleNode -> next = NULL;
 
 
 }
 
-void sll_insert_at(DoublyLinkedList * list, Node * indexNode, Node * insertNode) {
+void sll_insert_at(DoublyLinkedList * list, DoubleNode * indexNode, DoubleNode * insertNode) {
 
-    Node *curr = list -> head;
+    DoubleNode *curr = list -> head;
 
     while (curr-> next != indexNode) {
         curr= curr-> next;
@@ -116,9 +116,9 @@ void sll_insert_at(DoublyLinkedList * list, Node * indexNode, Node * insertNode)
 // Removing items from the list
 
 
-void sll_remove_at(DoublyLinkedList * list, Node * node) {
+void sll_remove_at(DoublyLinkedList * list, DoubleNode * node) {
 
-   Node *curr = list -> head;
+    DoubleNode *curr = list -> head;
 
     while (curr->next != node) {
             curr = curr -> next;
@@ -138,7 +138,7 @@ void sll_pop_front(DoublyLinkedList * list) {
 
 void sll_pop_back(DoublyLinkedList * list) {
 
-    Node *curr = list -> head;
+    DoubleNode *curr = list -> head;
     while (curr -> next != NULL) {
         curr = curr -> next;
     }
@@ -149,7 +149,7 @@ void sll_pop_back(DoublyLinkedList * list) {
 
 void sll_remove_value(DoublyLinkedList * list, void * data) {
 
-    Node * curr = list->head;
+    DoubleNode * curr = list->head;
 
     while (curr != NULL) {
 
@@ -165,9 +165,9 @@ void sll_remove_value(DoublyLinkedList * list, void * data) {
 }
 
 // Acessing the list
-Node sll_get_at(DoublyLinkedList * list, Node * node) {
+DoubleNode sll_get_at(DoublyLinkedList * list, DoubleNode * node) {
 
-    Node *curr = list->head;
+    DoubleNode *curr = list->head;
 
     while (curr != node) {
         curr = curr->next;
@@ -177,9 +177,9 @@ Node sll_get_at(DoublyLinkedList * list, Node * node) {
 
 }
 
-Node sll_find(DoublyLinkedList * list, void * data) {
+DoubleNode sll_find(DoublyLinkedList * list, void * data) {
 
-    Node *curr = list->head;
+    DoubleNode *curr = list->head;
 
     while (curr->data != data) {
         curr = curr->next;
@@ -189,13 +189,13 @@ Node sll_find(DoublyLinkedList * list, void * data) {
 
 }
 
-const char *sll_get_data(DoublyLinkedList *list, Node *node) {
+const char *sll_get_data(DoublyLinkedList *list, DoubleNode *DoubleNode) {
 
 
-        if (node->data == NULL) {
+        if (DoubleNode->data == NULL) {
             return NULL;
         }else {
-                return node->data;
+                return DoubleNode->data;
         }
 
 }
@@ -204,7 +204,7 @@ const char *sll_get_data(DoublyLinkedList *list, Node *node) {
 
 void sll_print(DoublyLinkedList * list) {
 
-    Node *curr = list->head;
+    DoubleNode *curr = list->head;
     while (curr != NULL) {
         printf("%s\n", curr->data);
         curr = curr -> next;
